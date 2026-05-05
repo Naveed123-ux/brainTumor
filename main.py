@@ -3,9 +3,19 @@ import torch
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from PIL import Image
 from model_utils import load_model, get_transform, CLA_LABEL, CNN_TUMOR
+from fastapi.middleware.cors import CORSMiddleware
 import os
 
 app = FastAPI(title="Brain Tumor Detection API")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Configuration
 MODEL_PATH = "Brain_Tumor_model.pt"
