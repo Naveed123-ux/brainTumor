@@ -80,10 +80,10 @@ jobs:
 
             # --- 1. Deploy AI Service Container ---
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/brain-tumor-ai:latest
-            docker stop brain-tumor-ai || true
-            docker rm brain-tumor-ai || true
+            docker stop nex-gen-ai || true
+            docker rm nex-gen-ai || true
             docker run -d \
-              --name brain-tumor-ai \
+              --name nex-gen-ai \
               --restart unless-stopped \
               --network nex-gen-network \
               -p ${{ secrets.AI_PORT || 8020 }}:8000 \
